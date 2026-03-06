@@ -1,0 +1,16 @@
+Started by user sumedh bagade
+Running as SYSTEM
+Building in workspace /root/.jenkins/workspace/webapp-httpd
+[webapp-httpd] $ /bin/sh -xe /mnt/webserver/apache-tomcat-10.1.52/temp/jenkins14992344708569373.sh
++ yum install httpd -y
+Last metadata expiration check: 0:48:41 ago on Fri Mar  6 12:25:50 2026.
+Package httpd-2.4.66-1.amzn2023.0.1.x86_64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
++ systemctl start httpd
++ cd /var/www/html
++ echo '<h1> Welcome to my web application</h1>'
++ chmod 777 index.html
++ systemctl restart httpd
+Finished: SUCCESS
