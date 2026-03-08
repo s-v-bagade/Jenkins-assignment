@@ -1,0 +1,35 @@
+Started by user sumedh bagade
+Running as SYSTEM
+Building in workspace /root/.jenkins/workspace/job3Q3
+The recommended git tool is: NONE
+using credential github-token
+Cloning the remote Git repository
+Cloning repository https://github.com/s-v-bagade/jenkins3.git
+ > git init /root/.jenkins/workspace/job3Q3 # timeout=10
+Fetching upstream changes from https://github.com/s-v-bagade/jenkins3.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+using GIT_ASKPASS to set credentials for logging into github
+ > git fetch --tags --force --progress -- https://github.com/s-v-bagade/jenkins3.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/s-v-bagade/jenkins3.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/2026Q3^{commit} # timeout=10
+Checking out Revision 50860c19641400ebb944a620b24ffba3e86b71ad (refs/remotes/origin/2026Q3)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 50860c19641400ebb944a620b24ffba3e86b71ad # timeout=10
+Commit message: "commited index to Q3"
+First time build. Skipping changelog.
+[job3Q3] $ /bin/sh -xe /mnt/webserver/apache-tomcat-10.1.52/temp/jenkins2025761901647718906.sh
++ yum install httpd -y
+Last metadata expiration check: 4:20:11 ago on Sun Mar  8 10:27:30 2026.
+Package httpd-2.4.66-1.amzn2023.0.1.x86_64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
++ systemctl start httpd
++ cd /var/www/html
++ /bin/cp --force /root/.jenkins/workspace/job3Q3/index.html .
++ chmod 777 index.html
++ systemctl restart httpd
+Finished: SUCCESS

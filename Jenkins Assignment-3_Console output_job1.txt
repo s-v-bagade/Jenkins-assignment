@@ -1,0 +1,37 @@
+Started by user sumedh bagade
+Running as SYSTEM
+Building in workspace /root/.jenkins/workspace/job1Q1
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+The recommended git tool is: NONE
+using credential github-token
+Cloning the remote Git repository
+Cloning repository https://github.com/s-v-bagade/jenkins1.git
+ > git init /root/.jenkins/workspace/job1Q1 # timeout=10
+Fetching upstream changes from https://github.com/s-v-bagade/jenkins1.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+using GIT_ASKPASS to set credentials for logging into github
+ > git fetch --tags --force --progress -- https://github.com/s-v-bagade/jenkins1.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/s-v-bagade/jenkins1.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/2026Q1^{commit} # timeout=10
+Checking out Revision b024e13a9855c12a906337a683f6f7889a1a6c6b (refs/remotes/origin/2026Q1)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f b024e13a9855c12a906337a683f6f7889a1a6c6b # timeout=10
+Commit message: "Merge pull request #1 from s-v-bagade/master"
+First time build. Skipping changelog.
+[job1Q1] $ /bin/sh -xe /mnt/webserver/apache-tomcat-10.1.52/temp/jenkins832107267200318718.sh
++ yum install httpd -y
+Last metadata expiration check: 4:24:04 ago on Sun Mar  8 10:27:30 2026.
+Package httpd-2.4.66-1.amzn2023.0.1.x86_64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
++ systemctl start httpd
++ cd /var/www/html
++ /bin/cp --force /root/.jenkins/workspace/job1Q1/index.html .
++ chmod 777 index.html
++ systemctl restart httpd
+Finished: SUCCESS
