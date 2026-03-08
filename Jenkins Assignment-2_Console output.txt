@@ -1,0 +1,38 @@
+Started by user sumedh bagade
+Running as SYSTEM
+Building in workspace /root/.jenkins/workspace/job1
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+The recommended git tool is: NONE
+using credential github-token
+Cloning the remote Git repository
+Cloning repository https://github.com/s-v-bagade/jenkins.git
+ > git init /root/.jenkins/workspace/job1 # timeout=10
+Fetching upstream changes from https://github.com/s-v-bagade/jenkins.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+using GIT_ASKPASS to set credentials for logging into github
+ > git fetch --tags --force --progress -- https://github.com/s-v-bagade/jenkins.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/s-v-bagade/jenkins.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/2026Q1^{commit} # timeout=10
+Checking out Revision 9ba0ca4e74aa258f70f722d6e90e29d06beccf8c (refs/remotes/origin/2026Q1)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 9ba0ca4e74aa258f70f722d6e90e29d06beccf8c # timeout=10
+Commit message: "index file commit to Q1"
+ > git rev-list --no-walk 9ba0ca4e74aa258f70f722d6e90e29d06beccf8c # timeout=10
+[job1] $ /bin/sh -xe /mnt/webserver/apache-tomcat-10.1.52/temp/jenkins13375644845430450876.sh
++ yum install httpd -y
+Last metadata expiration check: 2:39:39 ago on Sun Mar  8 10:27:30 2026.
+Package httpd-2.4.66-1.amzn2023.0.1.x86_64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
++ systemctl start httpd
++ cd /var/www/html
++ cp /root/.jenkins/workspace/job1/index.html .
++ chmod 777 index.html
++ systemctl restart httpd
+Finished: SUCCESS
