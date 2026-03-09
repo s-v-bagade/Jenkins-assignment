@@ -1,0 +1,57 @@
+Started by user sumedh bagade
+Running as SYSTEM
+Building in workspace /root/.jenkins/workspace/job1
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+The recommended git tool is: NONE
+using credential github
+Cloning the remote Git repository
+Cloning repository https://github.com/s-v-bagade/static-website.git
+ > git init /root/.jenkins/workspace/job1 # timeout=10
+Fetching upstream changes from https://github.com/s-v-bagade/static-website.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+using GIT_ASKPASS to set credentials token for github authentication
+ > git fetch --tags --force --progress -- https://github.com/s-v-bagade/static-website.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/s-v-bagade/static-website.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision dade4096d07bcf2ed3f684a40fcd9ad12cd198cd (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f dade4096d07bcf2ed3f684a40fcd9ad12cd198cd # timeout=10
+Commit message: "Create index.html"
+First time build. Skipping changelog.
+[job1] $ /bin/sh -xe /mnt/webserver/apache-tomcat-10.1.52/temp/jenkins17332280530030291691.sh
++ aws s3 mb s3://static-website-sumedh
+make_bucket: static-website-sumedh
++ aws s3 website s3://static-website-sumedh --index-document index.html
++ aws s3 sync . s3://static-website-sumedh
+Completed 106 Bytes/~1.8 KiB (4.5 KiB/s) with ~6 file(s) remaining (calculating...)upload: .git/FETCH_HEAD to s3://static-website-sumedh/.git/FETCH_HEAD              
+Completed 106 Bytes/~1.8 KiB (4.5 KiB/s) with ~5 file(s) remaining (calculating...)Completed 588 Bytes/~8.6 KiB (12.7 KiB/s) with ~9 file(s) remaining (calculating...)upload: .git/hooks/applypatch-msg.sample to s3://static-website-sumedh/.git/hooks/applypatch-msg.sample
+Completed 588 Bytes/~8.6 KiB (12.7 KiB/s) with ~8 file(s) remaining (calculating...)Completed 1016 Bytes/~25.7 KiB (12.9 KiB/s) with ~16 file(s) remaining (calculating...)upload: .git/hooks/pre-applypatch.sample to s3://static-website-sumedh/.git/hooks/pre-applypatch.sample
+Completed 1016 Bytes/~25.7 KiB (12.9 KiB/s) with ~15 file(s) remaining (calculating...)Completed 5.8 KiB/27.6 KiB (56.6 KiB/s) with 24 file(s) remaining                      upload: .git/hooks/pre-rebase.sample to s3://static-website-sumedh/.git/hooks/pre-rebase.sample
+Completed 5.8 KiB/27.6 KiB (56.6 KiB/s) with 23 file(s) remainingCompleted 5.8 KiB/27.6 KiB (52.7 KiB/s) with 23 file(s) remainingupload: .git/HEAD to s3://static-website-sumedh/.git/HEAD        
+Completed 5.8 KiB/27.6 KiB (52.7 KiB/s) with 22 file(s) remainingCompleted 8.1 KiB/27.6 KiB (65.1 KiB/s) with 22 file(s) remainingupload: .git/hooks/sendemail-validate.sample to s3://static-website-sumedh/.git/hooks/sendemail-validate.sample
+Completed 8.1 KiB/27.6 KiB (65.1 KiB/s) with 21 file(s) remainingCompleted 9.5 KiB/27.6 KiB (71.9 KiB/s) with 21 file(s) remainingupload: .git/hooks/prepare-commit-msg.sample to s3://static-website-sumedh/.git/hooks/prepare-commit-msg.sample
+Completed 9.5 KiB/27.6 KiB (71.9 KiB/s) with 20 file(s) remainingCompleted 9.7 KiB/27.6 KiB (67.8 KiB/s) with 20 file(s) remainingupload: .git/index to s3://static-website-sumedh/.git/index      
+Completed 9.7 KiB/27.6 KiB (67.8 KiB/s) with 19 file(s) remainingCompleted 9.9 KiB/27.6 KiB (63.6 KiB/s) with 19 file(s) remainingupload: .git/info/exclude to s3://static-website-sumedh/.git/info/exclude
+Completed 9.9 KiB/27.6 KiB (63.6 KiB/s) with 18 file(s) remainingCompleted 10.1 KiB/27.6 KiB (62.7 KiB/s) with 18 file(s) remainingupload: .git/logs/HEAD to s3://static-website-sumedh/.git/logs/HEAD
+Completed 10.1 KiB/27.6 KiB (62.7 KiB/s) with 17 file(s) remainingCompleted 10.4 KiB/27.6 KiB (57.7 KiB/s) with 17 file(s) remainingupload: .git/logs/refs/remotes/origin/master to s3://static-website-sumedh/.git/logs/refs/remotes/origin/master
+Completed 10.4 KiB/27.6 KiB (57.7 KiB/s) with 16 file(s) remainingCompleted 10.5 KiB/27.6 KiB (56.1 KiB/s) with 16 file(s) remainingupload: .git/objects/1d/0195580c0203891ac14ec828d49a957f84223a to s3://static-website-sumedh/.git/objects/1d/0195580c0203891ac14ec828d49a957f84223a
+Completed 10.5 KiB/27.6 KiB (56.1 KiB/s) with 15 file(s) remainingCompleted 10.9 KiB/27.6 KiB (57.0 KiB/s) with 15 file(s) remainingupload: .git/hooks/pre-merge-commit.sample to s3://static-website-sumedh/.git/hooks/pre-merge-commit.sample
+Completed 10.9 KiB/27.6 KiB (57.0 KiB/s) with 14 file(s) remainingCompleted 10.9 KiB/27.6 KiB (53.0 KiB/s) with 14 file(s) remainingCompleted 15.6 KiB/27.6 KiB (75.0 KiB/s) with 14 file(s) remainingupload: .git/hooks/fsmonitor-watchman.sample to s3://static-website-sumedh/.git/hooks/fsmonitor-watchman.sample
+Completed 15.6 KiB/27.6 KiB (75.0 KiB/s) with 13 file(s) remainingCompleted 16.4 KiB/27.6 KiB (78.1 KiB/s) with 13 file(s) remainingupload: .git/objects/d7/528dd955c54ea25c3850b14191ebc9911bab74 to s3://static-website-sumedh/.git/objects/d7/528dd955c54ea25c3850b14191ebc9911bab74
+Completed 16.4 KiB/27.6 KiB (78.1 KiB/s) with 12 file(s) remainingupload: .git/hooks/commit-msg.sample to s3://static-website-sumedh/.git/hooks/commit-msg.sample
+Completed 16.4 KiB/27.6 KiB (78.1 KiB/s) with 11 file(s) remainingCompleted 16.5 KiB/27.6 KiB (76.5 KiB/s) with 11 file(s) remainingupload: .git/description to s3://static-website-sumedh/.git/description
+Completed 16.5 KiB/27.6 KiB (76.5 KiB/s) with 10 file(s) remainingCompleted 17.9 KiB/27.6 KiB (81.7 KiB/s) with 10 file(s) remainingupload: .git/hooks/pre-push.sample to s3://static-website-sumedh/.git/hooks/pre-push.sample
+Completed 17.9 KiB/27.6 KiB (81.7 KiB/s) with 9 file(s) remainingCompleted 18.6 KiB/27.6 KiB (85.0 KiB/s) with 9 file(s) remainingupload: .git/objects/da/de4096d07bcf2ed3f684a40fcd9ad12cd198cd to s3://static-website-sumedh/.git/objects/da/de4096d07bcf2ed3f684a40fcd9ad12cd198cd
+Completed 18.6 KiB/27.6 KiB (85.0 KiB/s) with 8 file(s) remainingCompleted 18.8 KiB/27.6 KiB (85.4 KiB/s) with 8 file(s) remainingupload: .git/hooks/post-update.sample to s3://static-website-sumedh/.git/hooks/post-update.sample
+Completed 18.8 KiB/27.6 KiB (85.4 KiB/s) with 7 file(s) remainingCompleted 19.0 KiB/27.6 KiB (86.1 KiB/s) with 7 file(s) remainingupload: .git/config to s3://static-website-sumedh/.git/config    
+Completed 19.0 KiB/27.6 KiB (86.1 KiB/s) with 6 file(s) remainingCompleted 20.7 KiB/27.6 KiB (92.6 KiB/s) with 6 file(s) remainingupload: .git/hooks/pre-commit.sample to s3://static-website-sumedh/.git/hooks/pre-commit.sample
+Completed 20.7 KiB/27.6 KiB (92.6 KiB/s) with 5 file(s) remainingCompleted 23.4 KiB/27.6 KiB (99.9 KiB/s) with 5 file(s) remainingupload: .git/hooks/push-to-checkout.sample to s3://static-website-sumedh/.git/hooks/push-to-checkout.sample
+Completed 23.4 KiB/27.6 KiB (99.9 KiB/s) with 4 file(s) remainingCompleted 23.9 KiB/27.6 KiB (101.8 KiB/s) with 4 file(s) remainingCompleted 27.5 KiB/27.6 KiB (116.6 KiB/s) with 4 file(s) remainingupload: .git/hooks/update.sample to s3://static-website-sumedh/.git/hooks/update.sample
+Completed 27.5 KiB/27.6 KiB (116.6 KiB/s) with 3 file(s) remainingupload: .git/hooks/pre-receive.sample to s3://static-website-sumedh/.git/hooks/pre-receive.sample
+Completed 27.5 KiB/27.6 KiB (116.6 KiB/s) with 2 file(s) remainingCompleted 27.5 KiB/27.6 KiB (116.3 KiB/s) with 2 file(s) remainingupload: ./index.html to s3://static-website-sumedh/index.html     
+Completed 27.5 KiB/27.6 KiB (116.3 KiB/s) with 1 file(s) remainingCompleted 27.6 KiB/27.6 KiB (116.1 KiB/s) with 1 file(s) remainingupload: .git/refs/remotes/origin/master to s3://static-website-sumedh/.git/refs/remotes/origin/master
+Finished: SUCCESS
