@@ -1,0 +1,10 @@
+Started by user sumedh bagade
+Running as SYSTEM
+Building in workspace /root/.jenkins/workspace/job1
+[job1] $ /bin/sh -xe /mnt/webserver/apache-tomcat-10.1.52/temp/jenkins14462966306332688489.sh
++ echo 'Creating S3 bucket for artifacts'
+Creating S3 bucket for artifacts
++ aws s3 mb s3://artifact-bucket-sumedh
+make_bucket: artifact-bucket-sumedh
+Triggering a new build of job2
+Finished: SUCCESS
