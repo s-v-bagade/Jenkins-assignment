@@ -1,0 +1,33 @@
+Started by an SCM change
+Running as SYSTEM
+Building in workspace /mnt/job2
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/s-v-bagade/Repo2.git
+ > git init /mnt/job2 # timeout=10
+Fetching upstream changes from https://github.com/s-v-bagade/Repo2.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+ > git fetch --tags --force --progress -- https://github.com/s-v-bagade/Repo2.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/s-v-bagade/Repo2.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Seen branch in repository origin/2026Q2
+Seen 1 remote branch
+ > git show-ref --tags -d # timeout=10
+Checking out Revision 25b92f71ac97f520f78f96afe985f3c198053385 (origin/2026Q2)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 25b92f71ac97f520f78f96afe985f3c198053385 # timeout=10
+Commit message: "Update index.html"
+ > git rev-list --no-walk adda1169af89076dbaef945d51dc792b3473beeb # timeout=10
+[job2] $ /bin/sh -xe /mnt/webserver/apache-tomcat-10.1.52/temp/jenkins1688965495478760606.sh
++ cd /var/www/html/
++ rm -rf index.html
++ cp /mnt/job2/index.html .
++ chmod 777 index.html
++ systemctl restart httpd
+Finished: SUCCESS
