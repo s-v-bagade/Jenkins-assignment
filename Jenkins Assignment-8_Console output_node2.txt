@@ -1,0 +1,32 @@
+Started by an SCM change
+Running as SYSTEM
+Building remotely on node2 (slave) in workspace /mnt/project
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/s-v-bagade/Repo3.git
+ > git init /mnt/project # timeout=10
+Fetching upstream changes from https://github.com/s-v-bagade/Repo3.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+ > git fetch --tags --force --progress -- https://github.com/s-v-bagade/Repo3.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/s-v-bagade/Repo3.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/2026Q3^{commit} # timeout=10
+Checking out Revision 6d22968712acc128b3a06e428e7c3c2d8fa0693c (refs/remotes/origin/2026Q3)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 6d22968712acc128b3a06e428e7c3c2d8fa0693c # timeout=10
+Commit message: "Update index.html"
+ > git rev-list --no-walk 70238dc519cdebcb4258f1c84f02d8ab33be5b3c # timeout=10
+[project] $ /bin/sh -xe /tmp/jenkins10172572827350174607.sh
++ chmod -R 777 /mnt/project
++ cd /var/www/html/
++ sudo rm -rf index.html
++ sudo cp /mnt/project/index.html .
++ sudo chmod 777 index.html
++ sudo systemctl restart httpd
+Finished: SUCCESS
