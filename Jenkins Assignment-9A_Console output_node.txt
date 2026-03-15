@@ -1,0 +1,17 @@
+Started by upstream project "job1" build number 6
+originally caused by:
+ Started by user sumedh bagade
+Running as SYSTEM
+Building remotely on node1 (slave) in workspace /mnt/project
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+Copied 1 artifact from "job1" build number 6
+[project] $ /bin/sh -xe /tmp/jenkins16891111571375336141.sh
++ echo 'Deleting previous version'
+Deleting previous version
++ rm -rf /mnt/webserver/apache-tomcat-10.1.52/webapps/LoginWebApp.war
++ echo 'Deploying war file'
+Deploying war file
++ cp target/LoginWebApp.war /mnt/webserver/apache-tomcat-10.1.52/webapps/
+Finished: SUCCESS

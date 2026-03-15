@@ -1,0 +1,66 @@
+Started by user sumedh bagade
+Running as SYSTEM
+Building on the built-in node in workspace /mnt/project
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/s-v-bagade/project.git
+ > git init /mnt/project # timeout=10
+Fetching upstream changes from https://github.com/s-v-bagade/project.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+ > git fetch --tags --force --progress -- https://github.com/s-v-bagade/project.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/s-v-bagade/project.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision dad4cbb1657dd0bc83e677cdf2588836f9c329f2 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f dad4cbb1657dd0bc83e677cdf2588836f9c329f2 # timeout=10
+Commit message: "Create maven.yml"
+ > git rev-list --no-walk dad4cbb1657dd0bc83e677cdf2588836f9c329f2 # timeout=10
+[project] $ /mnt/build-tools/apache-maven-3.9.14/bin/mvn clean package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< com.javawebtutor:LoginWebApp >--------------------
+[INFO] Building LoginWebApp Maven Webapp 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ LoginWebApp ---
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ LoginWebApp ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /mnt/project/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ LoginWebApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ LoginWebApp ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /mnt/project/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ LoginWebApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ LoginWebApp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- war:3.5.1:war (default-war) @ LoginWebApp ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [LoginWebApp] in [/mnt/project/target/LoginWebApp]
+[INFO] Processing war project
+[INFO] Copying webapp resources [/mnt/project/src/main/webapp]
+[INFO] Building war: /mnt/project/target/LoginWebApp.war
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.642 s
+[INFO] Finished at: 2026-03-15T08:48:48Z
+[INFO] ------------------------------------------------------------------------
+Archiving artifacts
+Triggering a new build of job2
+Finished: SUCCESS
