@@ -1,0 +1,47 @@
+Started by user sumedh bagade
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /root/.jenkins/workspace/pipeline1
+[Pipeline] {
+[Pipeline] ws
+Running in /mnt/project
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (install httpd)
+[Pipeline] sh
++ yum install httpd -y
+Last metadata expiration check: 1:43:02 ago on Mon Mar 23 10:20:37 2026.
+Package httpd-2.4.66-1.amzn2023.0.1.x86_64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[Pipeline] sh
++ systemctl start httpd
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (create index file)
+[Pipeline] sh
++ echo '<h1> welcome to my index page </h1>'
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (deploy)
+[Pipeline] sh
++ cp index.html /var/www/html/
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (permission)
+[Pipeline] sh
++ chmod 777 /var/www/html/index.html
+[Pipeline] sh
++ systemctl restart httpd
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // ws
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
