@@ -1,0 +1,62 @@
+pipeline {
+        agent {
+            label {
+            label 'built-in'
+            customWorkspace "/mnt/project"
+            }
+        }
+        
+		stages {
+		       stage ("clone repo") {
+			          steps {
+					     sh "rm -rf *"
+					     git(
+						 url: 'https://github.com/s-v-bagade/static-website.git',
+						 credentialsId: 'gitcred'
+						 )
+					  }
+			   }
+			   
+			   stage ("Create S3 bucket") {
+			          steps {
+					  sh "aws s3 rb s3://static-website-sumedh --force"
+					  sh "aws s3 mb s3://static-website-sumedh"
+					  sh "aws s3 website s3://static-website-sumedh/ --index-document index.html"
+					  }
+			   }
+			   
+			   	   stage ("enable public access") {
+			          steps {
+					  sh '''
+					  aws s3api put-public-access-block --bucket static-website-sumedh --public-access-block-configuration "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false"
+					 '''
+					  }
+			   }
+			   
+			   stage ("create bucket policy") {
+			          steps {
+					  
+					  sh '''
+					  aws s3api put-bucket-policy --bucket static-website-sumedh --policy '{
+                      "Version":"2012-10-17",
+                      "Statement":[{
+                      "Sid":"PublicReadGetObject",
+                      "Effect":"Allow",
+                      "Principal":"*",
+                      "Action":["s3:GetObject"],
+                      "Resource":["arn:aws:s3:::static-website-sumedh/*"]
+                      }]
+                      }'
+					 '''
+					 
+					  }
+			   }
+			   
+			   stage ("Deploy index to S3") {
+			          steps {
+					  sh "aws s3 cp index.html s3://static-website-sumedh/"
+					  }
+			   }
+		
+		}
+}

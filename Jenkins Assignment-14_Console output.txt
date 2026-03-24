@@ -1,0 +1,80 @@
+Started by user sumedh bagade
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /root/.jenkins/workspace/pipeline
+[Pipeline] {
+[Pipeline] ws
+Running in /mnt/project
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (clone repo)
+[Pipeline] sh
++ rm -rf index.html
+[Pipeline] git
+The recommended git tool is: NONE
+using credential gitcred
+ > git rev-parse --resolve-git-dir /mnt/project/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/s-v-bagade/static-website.git # timeout=10
+Fetching upstream changes from https://github.com/s-v-bagade/static-website.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+using GIT_ASKPASS to set credentials for pvt repo
+ > git fetch --tags --force --progress -- https://github.com/s-v-bagade/static-website.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision dade4096d07bcf2ed3f684a40fcd9ad12cd198cd (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f dade4096d07bcf2ed3f684a40fcd9ad12cd198cd # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master dade4096d07bcf2ed3f684a40fcd9ad12cd198cd # timeout=10
+Commit message: "Create index.html"
+ > git rev-list --no-walk dade4096d07bcf2ed3f684a40fcd9ad12cd198cd # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Create S3 bucket)
+[Pipeline] sh
++ aws s3 rb s3://static-website-sumedh --force
+remove_bucket: static-website-sumedh
+[Pipeline] sh
++ aws s3 mb s3://static-website-sumedh
+make_bucket: static-website-sumedh
+[Pipeline] sh
++ aws s3 website s3://static-website-sumedh/ --index-document index.html
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (enable public access)
+[Pipeline] sh
++ aws s3api put-public-access-block --bucket static-website-sumedh --public-access-block-configuration BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (create bucket policy)
+[Pipeline] sh
++ aws s3api put-bucket-policy --bucket static-website-sumedh --policy '{
+                      "Version":"2012-10-17",
+                      "Statement":[{
+                      "Sid":"PublicReadGetObject",
+                      "Effect":"Allow",
+                      "Principal":"*",
+                      "Action":["s3:GetObject"],
+                      "Resource":["arn:aws:s3:::static-website-sumedh/*"]
+                      }]
+                      }'
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy index to S3)
+[Pipeline] sh
++ aws s3 cp index.html s3://static-website-sumedh/
+Completed 51 Bytes/51 Bytes (236 Bytes/s) with 1 file(s) remainingupload: ./index.html to s3://static-website-sumedh/index.html     
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // ws
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
