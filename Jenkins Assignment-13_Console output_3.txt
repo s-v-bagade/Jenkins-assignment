@@ -1,0 +1,49 @@
+Started by user sumedh bagade
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /root/.jenkins/workspace/pipeline3
+[Pipeline] {
+[Pipeline] ws
+Running in /mnt/project
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (clone repo)
+[Pipeline] sh
++ rm -rf index.html
+[Pipeline] git
+The recommended git tool is: NONE
+using credential gitcred
+ > git rev-parse --resolve-git-dir /mnt/project/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/s-v-bagade/Repo3.git # timeout=10
+Fetching upstream changes from https://github.com/s-v-bagade/Repo3.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+using GIT_ASKPASS to set credentials for pvt repo
+ > git fetch --tags --force --progress -- https://github.com/s-v-bagade/Repo3.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/2026Q3^{commit} # timeout=10
+Checking out Revision 7fed4265028c43a99795a30442460328da91c5d5 (refs/remotes/origin/2026Q3)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 7fed4265028c43a99795a30442460328da91c5d5 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b 2026Q3 7fed4265028c43a99795a30442460328da91c5d5 # timeout=10
+Commit message: "Update index.html"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (deploy index)
+[Pipeline] sh
++ cp index.html /var/www/html/
+[Pipeline] sh
++ chmod 777 /var/www/html/index.html
+[Pipeline] sh
++ systemctl restart httpd
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // ws
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

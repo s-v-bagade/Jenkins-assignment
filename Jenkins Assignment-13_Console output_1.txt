@@ -1,0 +1,150 @@
+Started by user sumedh bagade
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /root/.jenkins/workspace/pipeline1
+[Pipeline] {
+[Pipeline] ws
+Running in /mnt/project
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (clone repo)
+[Pipeline] sh
++ rm -rf '*'
+[Pipeline] git
+The recommended git tool is: NONE
+using credential gitcred
+Cloning the remote Git repository
+Cloning repository https://github.com/s-v-bagade/Repo1.git
+ > git init /mnt/project # timeout=10
+Fetching upstream changes from https://github.com/s-v-bagade/Repo1.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+using GIT_ASKPASS to set credentials for pvt repo
+ > git fetch --tags --force --progress -- https://github.com/s-v-bagade/Repo1.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/s-v-bagade/Repo1.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/2026Q1^{commit} # timeout=10
+Checking out Revision bff2845c143cf411018c70227ae4195a1ac01f19 (refs/remotes/origin/2026Q1)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f bff2845c143cf411018c70227ae4195a1ac01f19 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b 2026Q1 bff2845c143cf411018c70227ae4195a1ac01f19 # timeout=10
+Commit message: "Update index.html"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (install httpd)
+[Pipeline] sh
++ yum install httpd -y
+Last metadata expiration check: 0:18:48 ago on Tue Mar 24 11:12:17 2026.
+Dependencies resolved.
+================================================================================
+ Package               Arch     Version                     Repository     Size
+================================================================================
+Installing:
+ httpd                 x86_64   2.4.66-1.amzn2023.0.1       amazonlinux    47 k
+Installing dependencies:
+ apr                   x86_64   1.7.5-1.amzn2023.0.4        amazonlinux   129 k
+ apr-util              x86_64   1.6.3-1.amzn2023.0.2        amazonlinux    97 k
+ apr-util-lmdb         x86_64   1.6.3-1.amzn2023.0.2        amazonlinux    13 k
+ generic-logos-httpd   noarch   18.0.0-12.amzn2023.0.3      amazonlinux    19 k
+ httpd-core            x86_64   2.4.66-1.amzn2023.0.1       amazonlinux   1.4 M
+ httpd-filesystem      noarch   2.4.66-1.amzn2023.0.1       amazonlinux    13 k
+ httpd-tools           x86_64   2.4.66-1.amzn2023.0.1       amazonlinux    81 k
+ mailcap               noarch   2.1.49-3.amzn2023.0.3       amazonlinux    33 k
+Installing weak dependencies:
+ apr-util-openssl      x86_64   1.6.3-1.amzn2023.0.2        amazonlinux    15 k
+ mod_http2             x86_64   2.0.27-1.amzn2023.0.3       amazonlinux   166 k
+ mod_lua               x86_64   2.4.66-1.amzn2023.0.1       amazonlinux    60 k
+
+Transaction Summary
+================================================================================
+Install  12 Packages
+
+Total download size: 2.0 M
+Installed size: 6.2 M
+Downloading Packages:
+(1/12): apr-1.7.5-1.amzn2023.0.4.x86_64.rpm     3.7 MB/s | 129 kB     00:00    
+(2/12): apr-util-lmdb-1.6.3-1.amzn2023.0.2.x86_ 361 kB/s |  13 kB     00:00    
+(3/12): apr-util-1.6.3-1.amzn2023.0.2.x86_64.rp 2.3 MB/s |  97 kB     00:00    
+(4/12): apr-util-openssl-1.6.3-1.amzn2023.0.2.x 619 kB/s |  15 kB     00:00    
+(5/12): httpd-2.4.66-1.amzn2023.0.1.x86_64.rpm  1.8 MB/s |  47 kB     00:00    
+(6/12): generic-logos-httpd-18.0.0-12.amzn2023. 598 kB/s |  19 kB     00:00    
+(7/12): httpd-core-2.4.66-1.amzn2023.0.1.x86_64  38 MB/s | 1.4 MB     00:00    
+(8/12): httpd-filesystem-2.4.66-1.amzn2023.0.1. 391 kB/s |  13 kB     00:00    
+(9/12): httpd-tools-2.4.66-1.amzn2023.0.1.x86_6 2.3 MB/s |  81 kB     00:00    
+(10/12): mailcap-2.1.49-3.amzn2023.0.3.noarch.r 1.4 MB/s |  33 kB     00:00    
+(11/12): mod_http2-2.0.27-1.amzn2023.0.3.x86_64 5.2 MB/s | 166 kB     00:00    
+(12/12): mod_lua-2.4.66-1.amzn2023.0.1.x86_64.r 1.9 MB/s |  60 kB     00:00    
+--------------------------------------------------------------------------------
+Total                                            11 MB/s | 2.0 MB     00:00     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Installing       : apr-1.7.5-1.amzn2023.0.4.x86_64                       1/12 
+  Installing       : apr-util-lmdb-1.6.3-1.amzn2023.0.2.x86_64             2/12 
+  Installing       : apr-util-openssl-1.6.3-1.amzn2023.0.2.x86_64          3/12 
+  Installing       : apr-util-1.6.3-1.amzn2023.0.2.x86_64                  4/12 
+  Installing       : mailcap-2.1.49-3.amzn2023.0.3.noarch                  5/12 
+  Installing       : httpd-tools-2.4.66-1.amzn2023.0.1.x86_64              6/12 
+  Running scriptlet: httpd-filesystem-2.4.66-1.amzn2023.0.1.noarch         7/12 
+  Installing       : httpd-filesystem-2.4.66-1.amzn2023.0.1.noarch         7/12 
+  Installing       : httpd-core-2.4.66-1.amzn2023.0.1.x86_64               8/12 
+  Installing       : mod_http2-2.0.27-1.amzn2023.0.3.x86_64                9/12 
+  Installing       : mod_lua-2.4.66-1.amzn2023.0.1.x86_64                 10/12 
+  Installing       : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch    11/12 
+  Installing       : httpd-2.4.66-1.amzn2023.0.1.x86_64                   12/12 
+  Running scriptlet: httpd-2.4.66-1.amzn2023.0.1.x86_64                   12/12 
+  Verifying        : apr-1.7.5-1.amzn2023.0.4.x86_64                       1/12 
+  Verifying        : apr-util-1.6.3-1.amzn2023.0.2.x86_64                  2/12 
+  Verifying        : apr-util-lmdb-1.6.3-1.amzn2023.0.2.x86_64             3/12 
+  Verifying        : apr-util-openssl-1.6.3-1.amzn2023.0.2.x86_64          4/12 
+  Verifying        : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch     5/12 
+  Verifying        : httpd-2.4.66-1.amzn2023.0.1.x86_64                    6/12 
+  Verifying        : httpd-core-2.4.66-1.amzn2023.0.1.x86_64               7/12 
+  Verifying        : httpd-filesystem-2.4.66-1.amzn2023.0.1.noarch         8/12 
+  Verifying        : httpd-tools-2.4.66-1.amzn2023.0.1.x86_64              9/12 
+  Verifying        : mailcap-2.1.49-3.amzn2023.0.3.noarch                 10/12 
+  Verifying        : mod_http2-2.0.27-1.amzn2023.0.3.x86_64               11/12 
+  Verifying        : mod_lua-2.4.66-1.amzn2023.0.1.x86_64                 12/12 
+
+Installed:
+  apr-1.7.5-1.amzn2023.0.4.x86_64                                               
+  apr-util-1.6.3-1.amzn2023.0.2.x86_64                                          
+  apr-util-lmdb-1.6.3-1.amzn2023.0.2.x86_64                                     
+  apr-util-openssl-1.6.3-1.amzn2023.0.2.x86_64                                  
+  generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch                             
+  httpd-2.4.66-1.amzn2023.0.1.x86_64                                            
+  httpd-core-2.4.66-1.amzn2023.0.1.x86_64                                       
+  httpd-filesystem-2.4.66-1.amzn2023.0.1.noarch                                 
+  httpd-tools-2.4.66-1.amzn2023.0.1.x86_64                                      
+  mailcap-2.1.49-3.amzn2023.0.3.noarch                                          
+  mod_http2-2.0.27-1.amzn2023.0.3.x86_64                                        
+  mod_lua-2.4.66-1.amzn2023.0.1.x86_64                                          
+
+Complete!
+[Pipeline] sh
++ systemctl start httpd
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (deploy index)
+[Pipeline] sh
++ cp index.html /var/www/html/
+[Pipeline] sh
++ chmod 777 /var/www/html/index.html
+[Pipeline] sh
++ systemctl restart httpd
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // ws
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

@@ -1,0 +1,31 @@
+pipeline {
+        agent {
+            label {
+            label 'built-in'
+            customWorkspace "/mnt/project"
+            }
+        }
+        
+		stages {
+		       stage ("clone repo") {
+			          steps {
+					     sh "rm -rf *"
+					     git(
+						 url: 'https://github.com/s-v-bagade/Repo2.git',
+						 credentialsId: 'gitcred',
+						 branch: '2026Q2'
+						 )
+					  }
+			   }
+			   
+			   stage ("deploy index") {
+			          steps {
+					  sh "cp index.html /var/www/html/"
+					  sh "chmod 777 /var/www/html/index.html"
+					  sh "systemctl restart httpd"
+					  }
+			   }
+			   
+		
+		}
+}
